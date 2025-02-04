@@ -1,5 +1,6 @@
 package org.example;
 
+import com.VirreyFlix.models.Perfil;
 import com.VirreyFlix.models.Usuario;
 
 import java.util.Scanner;
@@ -25,15 +26,15 @@ public class Main {
 
             switch (opcion) {
                 case 1 ->usuarioCRUD();
-//                case 2 ->perfilCRUD();
+                case 2 ->perfilCRUD();
 //                case 3 ->serieCRUD();
 //                case 4 ->episodioCRUD();
 //                case 5 ->historialCRUD();
 //                case 6 ->consultas();
                 case 0 -> System.out.println("Saliendo de la aplicacion...");
-
                 default -> System.out.println("Opcion no valida");
             }
+            sc.nextLine();
         }while (opcion != 0);
     }
 
@@ -57,6 +58,30 @@ public class Main {
                 case 0 -> menuPrincipal();
                 default -> System.out.println("Opcion no valida");
             }
+            sc.nextLine();
         } while (opcionsur != 0);
+    }
+    public static void perfilCRUD() {
+        Perfil p = new Perfil();
+        int opcionper;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Crear Perfil");
+            System.out.println("2. Mostrar Perfil");
+            System.out.println("3. Actualizar Perfil");
+            System.out.println("4. Eliminar Perfil");
+            System.out.println("0. Volver al menu principal");
+            opcionper = sc.nextInt();
+
+            switch (opcionper) {
+                case 1 -> p.crearPerfil();
+                case 2 -> p.mostrarPerfil();
+                case 3 -> p.actualizarPerfil();
+                case 4 -> p.eliminarPerfil();
+                case 0 -> menuPrincipal();
+                default -> System.out.println("Opcion no valida");
+            }
+            sc.nextLine();
+        } while (opcionper != 0);
     }
 }
