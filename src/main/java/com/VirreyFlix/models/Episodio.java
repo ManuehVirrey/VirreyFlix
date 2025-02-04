@@ -2,6 +2,8 @@ package com.VirreyFlix.models;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Episodio {
 
@@ -9,14 +11,15 @@ public class Episodio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Column(length = 100)
     String titulo;
-
     int duracion;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "serie_id")
+    @ManyToOne
+    @JoinColumn(name = "serie_id", nullable = false)
     Serie serie;
+
+    @OneToMany(mappedBy = "episodio", cascade = CascadeType.ALL, orphanRemoval = true)
+    Set<Historial> historial;
 
 
     public Episodio() {

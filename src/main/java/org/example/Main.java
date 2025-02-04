@@ -1,6 +1,7 @@
 package org.example;
 
 import com.VirreyFlix.models.Perfil;
+import com.VirreyFlix.models.Serie;
 import com.VirreyFlix.models.Usuario;
 
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class Main {
             switch (opcion) {
                 case 1 ->usuarioCRUD();
                 case 2 ->perfilCRUD();
-//                case 3 ->serieCRUD();
+                case 3 ->serieCRUD();
 //                case 4 ->episodioCRUD();
 //                case 5 ->historialCRUD();
 //                case 6 ->consultas();
@@ -83,5 +84,28 @@ public class Main {
             }
             sc.nextLine();
         } while (opcionper != 0);
+    }
+    public static void serieCRUD() {
+        Serie s = new Serie();
+        int opcionser;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Crear Serie");
+            System.out.println("2. Mostrar Serie");
+            System.out.println("3. Actualizar Serie");
+            System.out.println("4. Eliminar Serie");
+            System.out.println("0. Volver al menu principal");
+            opcionser = sc.nextInt();
+
+            switch (opcionser) {
+                case 1 -> s.crearSerie();
+                case 2 -> s.mostrarSeries();
+                case 3 -> s.actualizarSerie();
+                case 4 -> s.eliminarSerie();
+                case 0 -> menuPrincipal();
+                default -> System.out.println("Opcion no valida");
+            }
+            sc.nextLine();
+        } while (opcionser != 0);
     }
 }
