@@ -1,5 +1,6 @@
 package org.example;
 
+import com.VirreyFlix.models.Historial;
 import com.VirreyFlix.models.Perfil;
 import com.VirreyFlix.models.Serie;
 import com.VirreyFlix.models.Usuario;
@@ -30,7 +31,7 @@ public class Main {
                 case 2 ->perfilCRUD();
                 case 3 ->serieCRUD();
 //                case 4 ->episodioCRUD();
-//                case 5 ->historialCRUD();
+                case 5 ->historialCRUD();
 //                case 6 ->consultas();
                 case 0 -> System.out.println("Saliendo de la aplicacion...");
                 default -> System.out.println("Opcion no valida");
@@ -107,5 +108,28 @@ public class Main {
             }
             sc.nextLine();
         } while (opcionser != 0);
+    }
+    public static void historialCRUD() {
+        Historial h = new Historial();
+        int opcionhis;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Crear Historial");
+            System.out.println("2. Mostrar Historial");
+            System.out.println("3. Actualizar Historial");
+            System.out.println("4. Eliminar Historial");
+            System.out.println("0. Volver al menu principal");
+            opcionhis = sc.nextInt();
+
+            switch (opcionhis) {
+                case 1 -> h.crearHistorial();
+                case 2 -> h.mostrarHistorial();
+                case 3 -> h.actualizarHistorial();
+                case 4 -> h.eliminarHistorial();
+                case 0 -> menuPrincipal();
+                default -> System.out.println("Opcion no valida");
+            }
+            sc.nextLine();
+        } while (opcionhis != 0);
     }
 }

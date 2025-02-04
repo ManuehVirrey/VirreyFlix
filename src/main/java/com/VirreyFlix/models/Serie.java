@@ -127,11 +127,9 @@ public class Serie {
             if (s.getId() == id) {
                 System.out.println("Ingresa el nuevo titulo de la Serie: ");
                 nTitulo = sc.nextLine();
-                sc.nextLine();
 
                 System.out.println("Ingresa el nuevo genero de la Serie: ");
                 genero = sc.nextLine();
-                sc.nextLine();
 
                 System.out.println("Ingresa la nueva calificacion: ");
                 nCalificacion = sc.nextInt();

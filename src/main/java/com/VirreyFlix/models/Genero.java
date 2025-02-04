@@ -1,11 +1,19 @@
 package com.VirreyFlix.models;
 
+import com.VirreyFlix.HibernateUtil;
 import jakarta.persistence.*;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.Scanner;
 
 @Entity
 public class Genero {
+
+    public static Scanner sc = new Scanner(System.in);
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -47,5 +55,6 @@ public class Genero {
     public void setSeries(List<Serie> series) {
         this.series = series;
     }
+
 }
 
