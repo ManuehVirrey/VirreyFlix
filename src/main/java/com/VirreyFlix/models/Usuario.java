@@ -21,6 +21,8 @@ public class Usuario {
     String nombre;
     @Column(length = 100, unique = true)
     String email;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Perfil perfil;
 
     public Usuario() {
 
@@ -29,6 +31,12 @@ public class Usuario {
     public Usuario(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
+    }
+
+    public Usuario(String nombre, String email, Perfil perfil) {
+        this.nombre = nombre;
+        this.email = email;
+        this.perfil = perfil;
     }
 
     public int getId() {

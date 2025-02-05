@@ -26,16 +26,19 @@ public class Serie {
 
     int calificacion;
 
+    int calificacion_edad;
+
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Episodio> episodios;
 
     public Serie() {
     }
 
-    public Serie(String titulo, String genero, int calificacion) {
+    public Serie(String titulo, String genero, int calificacion, int calificacion_edad) {
         this.titulo = titulo;
         this.genero = genero;
         this.calificacion = calificacion;
+        this.calificacion_edad = calificacion_edad;
     }
 
     public int getId() {
@@ -87,9 +90,12 @@ public class Serie {
 
         System.out.println("Ingresa la calificación de la nueva Serie (1-10): ");
         int nCalificacion = sc.nextInt();
+
+        System.out.println("Ingresa la edad de la nueva Serie : ");
+        int nCalificacionEdad = sc.nextInt();
         sc.nextLine();
 
-        Serie nuevaSerie = new Serie(nTitulo, nGenero, nCalificacion);
+        Serie nuevaSerie = new Serie(nTitulo, nGenero, nCalificacion,nCalificacionEdad);
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();

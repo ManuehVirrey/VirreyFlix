@@ -29,7 +29,7 @@ public class Main {
                 case 3 ->serieCRUD();
                 case 4 ->episodioCRUD();
                 case 5 ->historialCRUD();
-//                case 6 ->consultas();
+                case 6 ->consultas();
                 case 0 -> System.out.println("Saliendo de la aplicacion...");
                 default -> System.out.println("Opcion no valida");
             }
@@ -152,5 +152,52 @@ public class Main {
             sc.nextLine();
         } while (opcionhis != 0);
     }
+    private static void crudCapitulo(Scanner scanner) {
+        Capitulo c = new Capitulo();
+        int opcion;
 
+        do {
+            System.out.println("CRUD Capitulo:");
+            System.out.println("1. Agregar Capitulo");
+            System.out.println("2. Modificar Capitulo");
+            System.out.println("3. Eliminar Capitulo");
+            System.out.println("4. Mostrar Capitulo");
+            System.out.println("0. Volver al menu principal");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcion) {
+                case 1-> agregarCapitulo();
+                case 2-> modificarCapitulo();
+                case 3-> eliminarCapitulo();
+                case 4-> mostrarCapitulo();
+                case 0-> System.out.println("Volviendo al menu principal...");
+                default->System.out.println("Opcion no valida.");
+            }
+        } while (opcion != 0);
+    }
+    public static void consultas() {
+        Consultas c = new Consultas();
+        int opcioncon;
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Mostrar Usuarios y Perfiles");
+            System.out.println("2. Mostrar Series");
+            System.out.println("3. Mostrar Series Con Filtro");
+            System.out.println("4. Mostrar Capitulos por Serie");
+            System.out.println("0. Volver al menu principal");
+            opcioncon = sc.nextInt();
+
+            switch (opcioncon) {
+                case 1 -> c.mostrarUsuariosPerfil();
+                case 2 -> c.mostrarSeries();
+                case 3 -> c.mostrarSeriesFiltro();
+                case 4 -> c.mostrarCapitulosSerie();
+//                case 4 -> c.mostrarCapitulosVistos();
+                case 0 -> menuPrincipal();
+                default -> System.out.println("Opcion no valida");
+            }
+            sc.nextLine();
+        } while (opcioncon != 0);
+    }
 }

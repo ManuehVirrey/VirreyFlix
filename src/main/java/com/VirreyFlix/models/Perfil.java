@@ -16,18 +16,18 @@ public class Perfil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    @Column(length = 100)
-    String nombre;
+    private String nombre;
+    private int edad;
 
-    int edad;
+    @OneToOne
+    @JoinColumn(name = "usuario_id", unique = true)
+    private Usuario usuario;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    Usuario usuario;
+    @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL)
+    private Set<Historial> historiales;
 
-    @OneToMany(mappedBy = "perfil")
-    Set<Historial> historiales = new HashSet<Historial>();
 
     public Perfil() {
 

@@ -31,6 +31,7 @@
         <mapping class ="com.VirreyFlix.models.Serie" />
         <mapping class ="com.VirreyFlix.models.Episodio" />
         <mapping class ="com.VirreyFlix.models.Historial" />
+        <mapping class ="com.VirreyFlix.models.Capitulo" />
 
     </session-factory>
 </hibernate-configuration>
