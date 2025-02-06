@@ -19,7 +19,8 @@ public class Main {
             System.out.println("3. CRUD Serie");
             System.out.println("4. CRUD Episodio");
             System.out.println("5. CRUD Historial");
-            System.out.println("6. Consultas");
+            System.out.println("6. CRUD Capitulos");
+            System.out.println("7. Consultas");
             System.out.println("0. Salir");
             opcion = sc.nextInt();
 
@@ -29,11 +30,11 @@ public class Main {
                 case 3 ->serieCRUD();
                 case 4 ->episodioCRUD();
                 case 5 ->historialCRUD();
-                case 6 ->consultas();
+                case 6 ->capituloCRUD();
+                case 7 ->consultas();
                 case 0 -> System.out.println("Saliendo de la aplicacion...");
                 default -> System.out.println("Opcion no valida");
             }
-            sc.nextLine();
         }while (opcion != 0);
     }
 
@@ -152,7 +153,7 @@ public class Main {
             sc.nextLine();
         } while (opcionhis != 0);
     }
-    private static void crudCapitulo(Scanner scanner) {
+    private static void capituloCRUD() {
         Capitulo c = new Capitulo();
         int opcion;
 
@@ -163,14 +164,14 @@ public class Main {
             System.out.println("3. Eliminar Capitulo");
             System.out.println("4. Mostrar Capitulo");
             System.out.println("0. Volver al menu principal");
-            opcion = scanner.nextInt();
-            scanner.nextLine();
+            opcion = sc.nextInt();
+            sc.nextLine();
 
             switch (opcion) {
-                case 1-> agregarCapitulo();
-                case 2-> modificarCapitulo();
-                case 3-> eliminarCapitulo();
-                case 4-> mostrarCapitulo();
+                case 1-> c.crearCapitulo();
+                case 2-> c.modificarCapitulo();
+                case 3-> c.eliminarCapitulo();
+                case 4-> c.mostrarCapitulos();
                 case 0-> System.out.println("Volviendo al menu principal...");
                 default->System.out.println("Opcion no valida.");
             }

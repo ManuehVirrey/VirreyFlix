@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Entity
@@ -51,8 +52,8 @@ public class Capitulo {
         String nTitulo;
         int nDuracion,serieId;
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = s.beginTransaction();
 
         System.out.println("Ingresa el titulo del nuevo Capitulo: ");
         nTitulo = sc.nextLine();
@@ -63,14 +64,70 @@ public class Capitulo {
         System.out.println("Ingresa el ID de la Serie a la que pertenece: ");
         serieId = sc.nextInt();
 
-        Serie se = session.find(Serie.class,serieId);
+        Serie se = s.find(Serie.class,serieId);
 
         Capitulo c = new Capitulo(nTitulo, nDuracion,se);
 
-        session.persist(c);
+        s.persist(c);
         System.out.println("Capitulo creado con éxito");
 
         tx.commit();
-        session.close();
+        s.close();
+    }
+
+    public void modificarCapitulo() {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+
+        System.out.print("ID del Capitulo a modificar: ");
+        int idModificar = sc.nextInt();
+        sc.nextLine();
+        Capitulo capituloModificar = s.find(Capitulo.class, idModificar);
+        if (capituloModificar != null) {
+            System.out.print("Nuevo Titulo: ");
+            capituloModificar.setTitulo(sc.nextLine());
+            System.out.print("Nueva Duracion: ");
+            capituloModificar.setDuracion(sc.nextInt());
+            sc.nextLine();
+
+            s.getTransaction().begin();
+            s.merge(capituloModificar);
+            s.getTransaction().commit();
+
+            System.out.println("Capitulo modificado con exito.");
+        } else {
+            System.out.println("Capitulo no encontrado.");
+        }
+    }
+
+    public void eliminarCapitulo() {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+
+        System.out.print("ID del Capitulo a eliminar: ");
+        int idEliminar = sc.nextInt();
+        sc.nextLine();
+        Capitulo capituloEliminar = s.find(Capitulo.class, idEliminar);
+        if (capituloEliminar != null) {
+
+            s.getTransaction().begin();
+            s.remove(capituloEliminar);
+            s.getTransaction().commit();
+
+            System.out.println("Capitulo eliminado con exito.");
+        } else {
+            System.out.println("Capitulo no encontrado.");
+        }
+    }
+
+    public void mostrarCapitulos() {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+
+        List<Capitulo> capitulos = s.createQuery("FROM Capitulo ", Capitulo.class).getResultList();
+        if (!capitulos.isEmpty()) {
+            for (Capitulo capitulo : capitulos) {
+                System.out.println("ID: " + capitulo.getId() + ", Titulo: " + capitulo.getTitulo() + ", Duracion: " + capitulo.getDuracion());
+            }
+        } else {
+            System.out.println("No hay capitulos disponibles.");
+        }
     }
 }
