@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Historial {
     Episodio episodio;
 
     public Historial() {
-        this.fecha_reproduccion = LocalDateTime.now();
+        this.fecha_reproduccion =  LocalDateTime.now();
     }
 
     public Historial(LocalDateTime fecha_reproduccion) {
@@ -49,7 +50,7 @@ public class Historial {
         return fecha_reproduccion;
     }
 
-    public void setFecha_reproduccion(Date fecha_reproduccion) {
+    public void setFecha_reproduccion(LocalDateTime fecha_reproduccion) {
         this.fecha_reproduccion = fecha_reproduccion;
     }
 

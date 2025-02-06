@@ -3,6 +3,8 @@ package com.VirreyFlix.models;
 import com.VirreyFlix.HibernateUtil;
 import org.hibernate.Session;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -169,13 +171,13 @@ public class Consultas {
                     .orElse(null);
 
             if (historialExistente != null) {
-                historialExistente.setFecha_reproduccion(new Date());
+                historialExistente.setFecha_reproduccion(LocalDateTime.now());
                 s.merge(historialExistente);
             } else {
                 Historial nuevoHistorial = new Historial();
                 nuevoHistorial.setPerfil(perfil);
                 nuevoHistorial.setEpisodio(capitulo);
-                nuevoHistorial.setFecha_reproduccion(new Date());
+                nuevoHistorial.setFecha_reproduccion(LocalDateTime.now());
                 s.persist(nuevoHistorial);
             }
         }
