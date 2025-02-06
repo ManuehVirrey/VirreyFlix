@@ -81,6 +81,14 @@ public class Serie {
         this.episodios = episodios;
     }
 
+    public int getCalificacion_edad() {
+        return calificacion_edad;
+    }
+
+    public void setCalificacion_edad(int calificacion_edad) {
+        this.calificacion_edad = calificacion_edad;
+    }
+
     public void crearSerie() {
         System.out.println("Ingresa el título de la nueva Serie: ");
         String nTitulo = sc.nextLine();

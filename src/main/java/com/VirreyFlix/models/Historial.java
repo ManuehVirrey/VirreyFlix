@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -48,7 +49,7 @@ public class Historial {
         return fecha_reproduccion;
     }
 
-    public void setFecha_reproduccion(LocalDateTime fecha_reproduccion) {
+    public void setFecha_reproduccion(Date fecha_reproduccion) {
         this.fecha_reproduccion = fecha_reproduccion;
     }
 

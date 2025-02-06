@@ -186,6 +186,8 @@ public class Main {
             System.out.println("2. Mostrar Series");
             System.out.println("3. Mostrar Series Con Filtro");
             System.out.println("4. Mostrar Capitulos por Serie");
+            System.out.println("5. Mostrar Capitulos por ID");
+            System.out.println("6. Agregar un Episodio al Historial");
             System.out.println("0. Volver al menu principal");
             opcioncon = sc.nextInt();
 
@@ -194,7 +196,8 @@ public class Main {
                 case 2 -> c.mostrarSeries();
                 case 3 -> c.mostrarSeriesFiltro();
                 case 4 -> c.mostrarCapitulosSerie();
-//                case 4 -> c.mostrarCapitulosVistos();
+                case 5 -> c.mostrarCapitulosVistos();
+                case 6 -> c.agregarCapitulosAHistorial();
                 case 0 -> menuPrincipal();
                 default -> System.out.println("Opcion no valida");
             }
